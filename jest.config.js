@@ -2,7 +2,7 @@ module.exports = {
   collectCoverage: true,
   verbose: true,
   collectCoverageFrom: [
-    '**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
     '!jest.config.js',
     '!**/node_modules/**',
     '!coverage/**',
