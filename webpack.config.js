@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const webpack = require('webpack');
 var path = require('path');
@@ -45,17 +46,23 @@ module.exports = (env, argv) => {
     },
 
     devServer: {
-      contentBase: path.join(__dirname, 'dist'),
+      contentBase: [
+        path.join(__dirname, 'dist'),
+        path.join(__dirname, 'public'),
+      ],
       compress: true,
       port: 9000,
     },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src/index.html'),
+        template: path.resolve(__dirname, './src/index.html'),
       }),
       new MiniCssExtractPlugin({
         filename: 'style.css',
+      }),
+      new CopyWebpackPlugin({
+        patterns: [{ from: path.resolve(__dirname, './public'), to: 'public' }],
       }),
     ],
   };
