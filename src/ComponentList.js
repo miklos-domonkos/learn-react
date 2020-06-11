@@ -1,6 +1,6 @@
 import React from 'react';
 
-var man = { name: 'jack' };
+var man = { name: 'Jack' };
 
 function FunctionComponentFun({ inputData }) {
   return (

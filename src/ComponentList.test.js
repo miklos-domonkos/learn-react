@@ -8,7 +8,7 @@ describe('First Test Suite', () => {
     const testInstance = testRenderer.root;
     expect(
       testInstance.find(
-        (el) => el.type == 'p' && el.children[0] == '{"name":"jack"}'
+        (el) => el.type == 'p' && el.children[0] == '{"name":"Jack"}'
       )
     );
   });
