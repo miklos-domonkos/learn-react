@@ -4,11 +4,11 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build:dev": "webpack --mode=development --config=webpack.dev.config.js",
-    "build:prod": "webpack --mode=production --config=webpack.prod.config.js",
+    "build:dev": "webpack -d --config=webpack.dev.config.js",
+    "build:prod": "SET NODE_ENV=production && webpack -p --config=webpack.prod.config.js",
     "test": "jest --config ./jest.config.js",
     "start:dev": "webpack-dev-server --config webpack.dev.config.js",
-    "start:prod": "webpack-dev-server --config webpack.prod.config.js --port=9000"
+    "start:prod": "SET NODE_ENV=production && webpack-dev-server --config webpack.prod.config.js --port=9000"
   },
   "keywords": [],
   "author": "",

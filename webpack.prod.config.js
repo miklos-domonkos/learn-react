@@ -2,13 +2,13 @@ const prodConfig = require('./webpack.common.config');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const webpack = require('webpack');
 var path = require('path');
 
 const commonConfig = (env, argv) => {
   return {
     entry: {
       index: './src/index.js',
-      vendor: ['react', 'react-dom', 'react-redux', 'react-router', 'redux'],
     },
     output: {
       filename: '[name].[chunkhash].js',
@@ -39,7 +39,7 @@ const commonConfig = (env, argv) => {
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
+            name: 'vendor',
             enforce: true,
             chunks: 'all',
           },
@@ -49,6 +49,9 @@ const commonConfig = (env, argv) => {
     plugins: [
       new MiniCssExtractPlugin({
         filename: 'style.css',
+      }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
     ],
   };
