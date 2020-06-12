@@ -9,6 +9,7 @@ module.exports = (env, argv) => {
   return {
     entry: {
       index: './src/index.js',
+      about: './src/about.js',
     },
     output: {
       path: path.resolve(__dirname, './dist'),
@@ -25,13 +26,19 @@ module.exports = (env, argv) => {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
-        
       ],
     },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, './src/index.html'),
+        filename: 'index.html',
+        chunks: ['index'],
+        template: path.resolve(__dirname, './template/index.html'),
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'about.html',
+        chunks: ['about'],
+        template: path.resolve(__dirname, './template/about.html'),
       }),
       new CopyWebpackPlugin({
         patterns: [{ from: path.resolve(__dirname, './public'), to: 'public' }],
