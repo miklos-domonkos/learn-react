@@ -1,46 +1,16 @@
 import React from 'react';
 import Toggle from './Toggle';
+import { FunctionComponentConst } from './FunctionComponentConst';
+import { FunctionComponentFun } from './FunctionComponentFun';
+import { ReactComponent } from './ReactComponent';
+import { ReactPureComponent } from './ReactPureComponent';
+import { ReactCreateElementAndFun } from './ReactCreateElementAndFun';
+import { ReactCreateElementAndConst } from './ReactCreateElementAndConst';
 
 var man = { name: 'Jack' };
 
-function FunctionComponentFun({ inputData }) {
-  return (
-    <>
-      <h3>Hello {inputData}</h3>
-      <p>{JSON.stringify(this)}</p>
-    </>
-  );
-}
-
-const FunctionComponentConst = ({ inputData }) => (
-  <>
-    <h3>Hello {inputData}</h3>
-    <p>{JSON.stringify(this)}</p>
-  </>
-);
-
 const FunctionComponentFunBind = FunctionComponentFun.bind(man);
 const FunctionComponentConstBind = FunctionComponentConst.bind(man);
-
-class ReactComponent extends React.Component {
-  render() {
-    return <h3>Hello {this.props.inputData}</h3>;
-  }
-}
-
-class ReactPureComponent extends React.PureComponent {
-  render() {
-    return <h3>Hello {this.props.inputData}</h3>;
-  }
-}
-
-function ReactCreateElementAndFun({ inputData }) {
-  return React.createElement('h3', null, `Hello ${inputData}`);
-}
-
-const ReactCreateElementAndConst = ({ inputData }) => {
-  return React.createElement('h3', null, `Hello ${inputData}`);
-};
 
 const ComponentList = () => {
   return (

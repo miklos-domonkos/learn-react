@@ -33,6 +33,7 @@ const commonConfig = (env, argv) => {
         },
       ],
     },
+    //code splitting, utilize browser cache
     optimization: {
       runtimeChunk: 'single',
       splitChunks: {
