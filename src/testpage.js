@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './about.css';
+import './testpage.css';
 
 const TestPage = () => <h1>{'Just a test page :)'}</h1>;
 

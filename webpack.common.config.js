@@ -1,14 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const webpack = require('webpack');
 const path = require('path');
 
 module.exports = () => {
   return {
     entry: {
       index: './src/index.js',
-      about: './src/about.js',
+      testpage: './src/testpage.js',
     },
     output: {
       path: path.resolve(__dirname, './dist'),
@@ -52,9 +51,9 @@ module.exports = () => {
         template: path.resolve(__dirname, './template/index.html'),
       }),
       new HtmlWebpackPlugin({
-        filename: 'about.html',
-        chunks: ['about'],
-        template: path.resolve(__dirname, './template/about.html'),
+        filename: 'testpage.html',
+        chunks: ['testpage'],
+        template: path.resolve(__dirname, './template/testpage.html'),
       }),
       new CopyWebpackPlugin({
         patterns: [{ from: path.resolve(__dirname, './public'), to: 'public' }],
