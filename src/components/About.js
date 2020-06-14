@@ -1,9 +1,10 @@
 import React from 'react';
-export const About = () => {
-  return (
-    <>
-      <h1>About Page</h1>
-      <p>Testing multiple boundle</p>
-    </>
-  );
-};
+import './About.css';
+export const About = () => (
+  <>
+    <h1 className='title'>
+      <span>About Page</span>
+    </h1>
+    <p>Testing lazy load with chunks</p>
+  </>
+);

@@ -5,11 +5,11 @@ import { App } from './components/App';
 
 //Test babel transpile
 var [a, , b] = [1, 2, 3];
-console.log(a);
+console.log(a, b);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App className='App' />
   </React.StrictMode>,
   document.getElementById('root')
 );

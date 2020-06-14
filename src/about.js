@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './about.css';
-import { About } from './components/About';
+
+const TestPage = () => <h1>{'Just a test page :)'}</h1>;
 
 ReactDOM.render(
   <React.StrictMode>
-    <About />
+    <TestPage />
   </React.StrictMode>,
   document.getElementById('root')
 );

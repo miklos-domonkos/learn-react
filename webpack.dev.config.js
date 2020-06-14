@@ -1,14 +1,14 @@
 const webpack = require('webpack');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const commonConfig = require('./webpack.common.config');
 const merge = require('webpack-merge');
-
-var path = require('path');
+const path = require('path');
 
 const devConfig = (env, argv) => {
   return {
     output: {
       filename: '[name].js',
+      chunkFilename: '[name].[contenthash].js',
     },
 
     module: {
@@ -17,6 +17,10 @@ const devConfig = (env, argv) => {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: ['babel-loader'],
+        },
+        {
+          test: /\.css$/i,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/i,
@@ -29,6 +33,28 @@ const devConfig = (env, argv) => {
         },
       ],
     },
+
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[name].[contenthash].css',
+      }),
+      new webpack.NamedChunksPlugin((chunk) => {
+        if (chunk.name) {
+          return chunk.name;
+        }
+
+        return [...chunk._modules]
+          .slice(0, 1)
+          .map((m) =>
+            path.relative(
+              m.context,
+              m.userRequest.substring(0, m.userRequest.lastIndexOf('.'))
+            )
+          )
+          .join('_');
+      }),
+    ],
 
     devServer: {
       contentBase: [
