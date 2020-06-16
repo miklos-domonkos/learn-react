@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 export default class Toggle extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,9 @@ export default class Toggle extends React.Component {
     this.setState((state) => ({
       isToggleOn: !state.isToggleOn,
     }));
+    this.props.onToggle();
   }
+
   render() {
     return (
       <button onClick={this.handleClick}>

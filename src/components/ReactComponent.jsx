@@ -7,6 +7,7 @@ const propTypes = {
 
 export class ReactComponent extends React.Component {
   render() {
+    console.log(`render ReactComponent with: ${this.props.inputData}`);
     return <h3>Hello {this.props.inputData}</h3>;
   }
 }

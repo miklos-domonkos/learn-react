@@ -7,6 +7,7 @@ const propTypes = {
 
 export class ReactPureComponent extends React.PureComponent {
   render() {
+    console.log(`render ReactPureComponent with: ${this.props.inputData}`);
     return <h3>Hello {this.props.inputData}</h3>;
   }
 }
