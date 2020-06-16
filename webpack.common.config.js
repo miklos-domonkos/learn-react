@@ -9,10 +9,24 @@ module.exports = () => {
       index: './src/index.js',
       testpage: './src/testpage.js',
     },
+
     output: {
       path: path.resolve(__dirname, './dist'),
     },
 
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          resolve: {
+            extensions: ['.js', '.jsx'],
+          },
+          use: ['babel-loader'],
+        },
+      ],
+    },
+    
     optimization: {
       splitChunks: {
         chunks: 'all',
@@ -33,16 +47,6 @@ module.exports = () => {
       },
     },
 
-    module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader'],
-        },
-       
-      ],
-    },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
