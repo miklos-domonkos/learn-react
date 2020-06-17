@@ -27,6 +27,7 @@ module.exports = () => {
       ],
     },
     
+    //code splitting, utilize browser cache
     optimization: {
       splitChunks: {
         chunks: 'all',

@@ -28,7 +28,6 @@ const commonConfig = (env, argv) => {
         },
       ],
     },
-    //code splitting, utilize browser cache
 
     plugins: [
       new webpack.DefinePlugin({
